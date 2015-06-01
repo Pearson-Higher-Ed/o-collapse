@@ -1,0 +1,13 @@
+{
+  "name": "o-he-collapse",
+  "dependencies": {},
+  "main": [
+    "main.js"
+  ],
+  "ignore": [
+    "examples",
+    "test",
+    ".gitignore"
+  ],
+  "license": "MIT"
+}
