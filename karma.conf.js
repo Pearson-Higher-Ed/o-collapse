@@ -1,6 +1,8 @@
 /*global module*/
 'use strict';
 
+var istanbul = require('browserify-istanbul');
+
 module.exports = function(config) {
 	config.set({
 
@@ -16,7 +18,7 @@ module.exports = function(config) {
 		// list of files / patterns to load in the browser
 		files: [
 			// Polyfill PhantomJS as it's a similar Webkit version
-			'http://polyfill.webservices.ft.com/v1/polyfill.js?ua=safari/4',
+			'http://polyfill.webservices.ft.com/v1/polyfill.js?ua=safari/4&features=default,WeakMap',
 			'test/*.test.js'
 		],
 
@@ -36,7 +38,16 @@ module.exports = function(config) {
 		// test results reporter to use
 		// possible values: 'dots', 'progress'
 		// available reporters: https://npmjs.org/browse/keyword/karma-reporter
-		reporters: ['progress'],
+		reporters: ['progress', 'coverage'],
+
+
+		// coverage reporter options
+		coverageReporter: {
+			dir: 'build/reports/coverage',
+			reporters: [
+				{ type: 'html', subdir: 'report-html' }
+			]
+		},
 
 
 		// web server port
@@ -67,7 +78,9 @@ module.exports = function(config) {
 
 		browserify: {
 			debug: true,
-			transform: [ 'debowerify' ]
+			transform: ['debowerify', istanbul({
+				ignore: ['node_modules/**', 'test/**']
+			})]
 		}
 
 	});

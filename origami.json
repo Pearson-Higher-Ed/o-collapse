@@ -4,6 +4,11 @@
     "origamiVersion": 1,
     "support": "https://github.com/Financial-Times/o-he-collapse/issues",
     "supportStatus": "experimental",
+    "browserFeatures": {
+        "required": [
+            "WeakMap"
+        ]    
+    },
     "demos": [
         {
             "path": "/demos/demo.html",

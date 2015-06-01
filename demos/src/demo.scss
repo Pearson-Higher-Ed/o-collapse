@@ -1,4 +1,16 @@
 $o-assets-global-path: '/bower_components/';
 $o-he-collapse-is-silent: false;
 
-@import '../../main';
+.o-he-collapse {
+	// Hide collapsed elements by default
+	display: none;
+}
+
+.o-he-collapse--expanded {
+	display: block;
+}
+
+.demo__panel {
+	padding: 15px;
+	border: 1px solid #cccccc;
+}

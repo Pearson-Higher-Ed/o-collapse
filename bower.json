@@ -1,6 +1,8 @@
 {
   "name": "o-he-collapse",
-  "dependencies": {},
+  "dependencies": {
+    "dom-delegate": "^2.0.3"
+  },
   "main": [
     "main.js"
   ],
