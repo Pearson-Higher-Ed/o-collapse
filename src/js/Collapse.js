@@ -24,7 +24,8 @@ function Collapse(element) {
 		bodyDelegate.on('click', '[data-toggle="o-he-collapse"]', function handleClick(e) {
 			e.preventDefault();
 
-			var target = getTargetFromTrigger(e.target);
+			var trigger = getTrigger(e.target);
+			var target = getTargetFromTrigger(trigger);
 
 			forEach(target, function (index, target) {
 				var collapsible = Collapse.cache.get(target);
@@ -117,6 +118,14 @@ function selectAll(element) {
 	}
 
 	return element.querySelectorAll('[data-o-component="o-he-collapse"]');
+}
+
+function getTrigger(element) {
+	while (element && element.getAttribute('data-toggle') !== 'o-he-collapse') {
+		element = element.parentElement;
+	}
+
+	return element;
 }
 
 function getTargetFromTrigger(element) {

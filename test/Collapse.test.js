@@ -231,6 +231,25 @@ describe('Collapse', function () {
 			expect(isExpanded(element)).to.be(true);
 		});
 
+		it('should work when the event target is nested below the trigger element', function () {
+			var element = document.createElement('div');
+			element.id = 'nested-target';
+			element.setAttribute('data-o-component', 'o-he-collapse');
+			document.body.appendChild(element);
+
+			var trigger = document.createElement('button');
+			trigger.setAttribute('data-toggle', 'o-he-collapse');
+			trigger.setAttribute('data-target', '#nested-target');
+			document.body.appendChild(trigger);
+
+			var nested = document.createElement('span');
+			trigger.appendChild(nested);
+
+			dispatchEvent(nested, 'click');
+
+			expect(isExpanded(element)).to.be(true);
+		});
+
 	});
 
 });
