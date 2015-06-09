@@ -4,5 +4,5 @@
 
 #### Features
 
-* basic toggle ([905efb57](https://github.com/aarmour/o-he-collapse/commit/905efb57))
+* basic toggle ([905efb57](https://github.com/aarmour/o-collapse/commit/905efb57))
 

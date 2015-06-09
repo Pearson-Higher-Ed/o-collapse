@@ -9,19 +9,19 @@ function Collapse(element) {
 	if (!(element instanceof HTMLElement)) throw new TypeError('Failed to construct Collapse: element must be HTMLElement');
 
 	var triggerSelector =
-		'[data-toggle="o-he-collapse"][href="#' + element.id + '"],' +
-		'[data-toggle="o-he-collapse"][data-target="#' + element.id + '"]';
+		'[data-toggle="o-collapse"][href="#' + element.id + '"],' +
+		'[data-toggle="o-collapse"][data-target="#' + element.id + '"]';
 
 	this.target = element;
 	this.trigger = document.querySelectorAll(triggerSelector);
 	Collapse.cache.set(element, this);
 
-	if (!element.classList.contains('o-he-collapse')) element.classList.add('o-he-collapse');
+	if (!element.classList.contains('o-collapse')) element.classList.add('o-collapse');
 
 	if (!Collapse.bodyDelegate) {
 		var bodyDelegate = new DomDelegate(document.body);
 
-		bodyDelegate.on('click', '[data-toggle="o-he-collapse"]', function handleClick(e) {
+		bodyDelegate.on('click', '[data-toggle="o-collapse"]', function handleClick(e) {
 			e.preventDefault();
 
 			var trigger = getTrigger(e.target);
@@ -30,7 +30,7 @@ function Collapse(element) {
 			forEach(target, function (index, target) {
 				var collapsible = Collapse.cache.get(target);
 
-				if (!collapsible && target.getAttribute('data-o-component') === 'o-he-collapse') {
+				if (!collapsible && target.getAttribute('data-o-component') === 'o-collapse') {
 					collapsible = new Collapse(target);
 				}
 
@@ -76,9 +76,9 @@ Collapse.prototype.show = function () {
 	var target = this.target;
 	var trigger = this.trigger;
 
-	if (target.classList.contains('o-he-collapse--expanded')) return;
+	if (target.classList.contains('o-collapse--expanded')) return;
 
-	target.classList.add('o-he-collapse--expanded');
+	target.classList.add('o-collapse--expanded');
 	target.setAttribute('aria-expanded', true);
 
 	forEach(trigger, function (index, trigger) {
@@ -93,9 +93,9 @@ Collapse.prototype.hide = function () {
 	var target = this.target;
 	var trigger = this.trigger;
 
-	if (!target.classList.contains('o-he-collapse--expanded')) return;
+	if (!target.classList.contains('o-collapse--expanded')) return;
 
-	target.classList.remove('o-he-collapse--expanded');
+	target.classList.remove('o-collapse--expanded');
 	target.setAttribute('aria-expanded', false);
 
 	forEach(trigger, function (index, trigger) {
@@ -107,7 +107,7 @@ Collapse.prototype.hide = function () {
  * Toggles the collapsible element based on its current state.
  */
 Collapse.prototype.toggle = function () {
-	this[this.target.classList.contains('o-he-collapse--expanded') ? 'hide' : 'show']();
+	this[this.target.classList.contains('o-collapse--expanded') ? 'hide' : 'show']();
 };
 
 function selectAll(element) {
@@ -117,11 +117,11 @@ function selectAll(element) {
 		element = document.querySelector(element);
 	}
 
-	return element.querySelectorAll('[data-o-component="o-he-collapse"]');
+	return element.querySelectorAll('[data-o-component="o-collapse"]');
 }
 
 function getTrigger(element) {
-	while (element && element.getAttribute('data-toggle') !== 'o-he-collapse') {
+	while (element && element.getAttribute('data-toggle') !== 'o-collapse') {
 		element = element.parentElement;
 	}
 

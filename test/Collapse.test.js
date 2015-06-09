@@ -36,11 +36,11 @@ describe('Collapse', function () {
 
 		before(function () {
 			var element1 = document.createElement('div');
-			element1.setAttribute('data-o-component', 'o-he-collapse');
+			element1.setAttribute('data-o-component', 'o-collapse');
 			document.body.appendChild(element1);
 
 			var element2 = document.createElement('div');
-			element2.setAttribute('data-o-component', 'o-he-collapse');
+			element2.setAttribute('data-o-component', 'o-collapse');
 			document.body.appendChild(element2);
 		});
 
@@ -102,13 +102,13 @@ describe('Collapse', function () {
 			document.body.appendChild(element);
 
 			var linkTrigger = document.createElement('a');
-			linkTrigger.setAttribute('data-toggle', 'o-he-collapse');
+			linkTrigger.setAttribute('data-toggle', 'o-collapse');
 			linkTrigger.setAttribute('href', '#collapse');
 			linkTrigger.setAttribute('aria-expanded', false);
 			document.body.appendChild(linkTrigger);
 
 			var buttonTrigger = document.createElement('button');
-			buttonTrigger.setAttribute('data-toggle', 'o-he-collapse');
+			buttonTrigger.setAttribute('data-toggle', 'o-collapse');
 			buttonTrigger.setAttribute('data-target', '#collapse');
 			buttonTrigger.setAttribute('aria-expanded', false);
 			document.body.appendChild(buttonTrigger);
@@ -139,17 +139,17 @@ describe('Collapse', function () {
 		it('should set aria-expanded="false" on the trigger elements', function () {
 			var element = document.createElement('div');
 			element.id = 'collapse';
-			element.classList.add('o-he-collapse--expanded');
+			element.classList.add('o-collapse--expanded');
 			document.body.appendChild(element);
 
 			var linkTrigger = document.createElement('a');
-			linkTrigger.setAttribute('data-toggle', 'o-he-collapse');
+			linkTrigger.setAttribute('data-toggle', 'o-collapse');
 			linkTrigger.setAttribute('href', '#collapse');
 			linkTrigger.setAttribute('aria-expanded', true);
 			document.body.appendChild(linkTrigger);
 
 			var buttonTrigger = document.createElement('button');
-			buttonTrigger.setAttribute('data-toggle', 'o-he-collapse');
+			buttonTrigger.setAttribute('data-toggle', 'o-collapse');
 			buttonTrigger.setAttribute('data-target', '#collapse');
 			buttonTrigger.setAttribute('aria-expanded', true);
 			document.body.appendChild(buttonTrigger);
@@ -187,16 +187,16 @@ describe('Collapse', function () {
 		it('should toggle element', function () {
 			var element = document.createElement('div');
 			element.id = 'click';
-			element.setAttribute('data-o-component', 'o-he-collapse');
+			element.setAttribute('data-o-component', 'o-collapse');
 			document.body.appendChild(element);
 
 			var linkTrigger = document.createElement('a');
-			linkTrigger.setAttribute('data-toggle', 'o-he-collapse');
+			linkTrigger.setAttribute('data-toggle', 'o-collapse');
 			linkTrigger.setAttribute('href', '#click');
 			document.body.appendChild(linkTrigger);
 
 			var buttonTrigger = document.createElement('button');
-			buttonTrigger.setAttribute('data-toggle', 'o-he-collapse');
+			buttonTrigger.setAttribute('data-toggle', 'o-collapse');
 			buttonTrigger.setAttribute('data-target', '#click');
 			document.body.appendChild(buttonTrigger);
 
@@ -218,11 +218,11 @@ describe('Collapse', function () {
 		it('should create a new Collapse instance if the target does not have one', function () {
 			var element = document.createElement('div');
 			element.id = 'not-initialized';
-			element.setAttribute('data-o-component', 'o-he-collapse');
+			element.setAttribute('data-o-component', 'o-collapse');
 			document.body.appendChild(element);
 
 			var trigger = document.createElement('button');
-			trigger.setAttribute('data-toggle', 'o-he-collapse');
+			trigger.setAttribute('data-toggle', 'o-collapse');
 			trigger.setAttribute('data-target', '#not-initialized');
 			document.body.appendChild(trigger);
 
@@ -234,11 +234,11 @@ describe('Collapse', function () {
 		it('should work when the event target is nested below the trigger element', function () {
 			var element = document.createElement('div');
 			element.id = 'nested-target';
-			element.setAttribute('data-o-component', 'o-he-collapse');
+			element.setAttribute('data-o-component', 'o-collapse');
 			document.body.appendChild(element);
 
 			var trigger = document.createElement('button');
-			trigger.setAttribute('data-toggle', 'o-he-collapse');
+			trigger.setAttribute('data-toggle', 'o-collapse');
 			trigger.setAttribute('data-target', '#nested-target');
 			document.body.appendChild(trigger);
 
@@ -268,6 +268,6 @@ function dispatchEvent(element, name, data) {
 }
 
 function isExpanded(element) {
-	return element.classList.contains('o-he-collapse--expanded') &&
+	return element.classList.contains('o-collapse--expanded') &&
 		element.getAttribute('aria-expanded') === 'true';
 }

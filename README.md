@@ -1,13 +1,13 @@
-# o-he-collapse [![Build Status](https://travis-ci.org/aarmour/o-he-collapse.svg?branch=master)](https://travis-ci.org/aarmour/o-he-collapse)
+# o-collapse [![Build Status](https://travis-ci.org/aarmour/o-collapse.svg?branch=master)](https://travis-ci.org/aarmour/o-collapse)
 
 ## Quick start
 
-Add `class="o-he-collapse"` and `data-o-component="o-he-collapse"` to the target element to enable collapse. You can use a link with `href` or a button with `data-target` as the trigger:
+Add `class="o-collapse"` and `data-o-component="o-collapse"` to the target element to enable collapse. You can use a link with `href` or a button with `data-target` as the trigger:
 
 ```html
-<a href="#collapse-example" data-toggle="o-he-collapse" aria-controls="collapse-example" aria-expanded="false">Link trigger</a>
-<button data-toggle="o-he-collapse" data-target="#collapse-example" aria-controls="collapse-example" aria-expanded="false">Button trigger</button>
-<p id="collapse-example" class="o-he-collapse" data-o-component="o-he-collapse">Quisque in tortor finibus, dictum sem vel, convallis felis. Nunc ac mi in urna euismod eleifend in vitae augue. Suspendisse blandit feugiat vulputate. Praesent sit amet fringilla eros. Mauris nunc nisl, laoreet sit amet molestie vitae, sodales et diam.</p>
+<a href="#collapse-example" data-toggle="o-collapse" aria-controls="collapse-example" aria-expanded="false">Link trigger</a>
+<button data-toggle="o-collapse" data-target="#collapse-example" aria-controls="collapse-example" aria-expanded="false">Button trigger</button>
+<p id="collapse-example" class="o-collapse" data-o-component="o-collapse">Quisque in tortor finibus, dictum sem vel, convallis felis. Nunc ac mi in urna euismod eleifend in vitae augue. Suspendisse blandit feugiat vulputate. Praesent sit amet fringilla eros. Mauris nunc nisl, laoreet sit amet molestie vitae, sodales et diam.</p>
 ```
 
 ## Enabling using JavaScript
