@@ -6,7 +6,8 @@
     "supportStatus": "experimental",
     "browserFeatures": {
         "required": [
-            "WeakMap"
+            "WeakMap",
+            "createevent"
         ]    
     },
     "demos": [

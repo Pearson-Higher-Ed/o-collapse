@@ -121,6 +121,20 @@ describe('Collapse', function () {
 			expect(buttonTrigger.getAttribute('aria-expanded')).to.be('true');
 		});
 
+		it('should emit oCollapse.show', function (done) {
+			var element = document.createElement('div');
+			document.body.appendChild(element);
+
+			var collapsible = new Collapse(element);
+
+			element.addEventListener('oCollapse.show', function (e) {
+				expect(e.target).to.be(element);
+				done();
+			});
+
+			collapsible.show();
+		});
+
 	});
 
 	describe('hide()', function () {
@@ -160,6 +174,21 @@ describe('Collapse', function () {
 
 			expect(linkTrigger.getAttribute('aria-expanded')).to.be('false');
 			expect(buttonTrigger.getAttribute('aria-expanded')).to.be('false');
+		});
+
+		it('should emit oCollapse.hide', function (done) {
+			var element = document.createElement('div');
+			document.body.appendChild(element);
+
+			var collapsible = new Collapse(element);
+
+			element.addEventListener('oCollapse.hide', function (e) {
+				expect(e.target).to.be(element);
+				done();
+			});
+
+			collapsible.show();
+			collapsible.hide();
 		});
 
 	});

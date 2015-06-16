@@ -1,6 +1,7 @@
 'use strict';
 
 var DomDelegate = require('dom-delegate');
+var dispatchEvent = require('./utils').dispatchEvent;
 var forEach = require('./utils').forEach;
 
 function Collapse(element) {
@@ -78,6 +79,8 @@ Collapse.prototype.show = function () {
 
 	if (target.classList.contains('o-collapse--expanded')) return;
 
+	dispatchEvent(target, 'oCollapse.show');
+
 	target.classList.add('o-collapse--expanded');
 	target.setAttribute('aria-expanded', true);
 
@@ -94,6 +97,8 @@ Collapse.prototype.hide = function () {
 	var trigger = this.trigger;
 
 	if (!target.classList.contains('o-collapse--expanded')) return;
+
+	dispatchEvent(target, 'oCollapse.hide');
 
 	target.classList.remove('o-collapse--expanded');
 	target.setAttribute('aria-expanded', false);

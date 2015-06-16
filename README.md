@@ -46,6 +46,19 @@ Collapses the target element.
 
 Toggles the target element, depending on its current state.
 
+### Events
+
+| Event Name               | Description                                         |
+|--------------------------|-----------------------------------------------------|
+| oCollapse.show           | Fires immediately when the `show` method is called. |
+| oCollapse.hide           | Fires immediately when the `hide` method is called. |
+
+```js
+document.querySelector('#collapse').addEventListener('oCollapse.show', function (e) {
+	// Do something
+});
+```
+
 ## Accessibility
 
 The `aria-expanded` and `aria-controls` attributes should be added to the trigger element to help assistive devices, such as screen readers, determine the state and location of the collapsible element. The module will automatically update `aria-expanded` depending on the state of the target element.
