@@ -77,7 +77,7 @@ Tested and working on:
 Browser versions that do not support [WeakMap](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap) must use a polyfill, for example via the [polyfill service](https://cdn.polyfill.io/v1/docs/):
 
 ```html
-<script src="https://cdn.polyfill.io/v1/polyfill.min.js?features=WeakMap"></script>
+<script src="https://cdn.polyfill.io/v1/polyfill.min.js?features=default,WeakMap"></script>
 ```
 
 ## License
