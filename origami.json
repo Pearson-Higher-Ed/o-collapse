@@ -2,7 +2,7 @@
     "description": "Element toggle",
     "origamiType": "module",
     "origamiVersion": 1,
-    "support": "https://github.com/aarmour/o-collapse/issues",
+    "support": "https://github.com/Pearson-Higher-Ed/o-collapse/issues",
     "supportStatus": "experimental",
     "browserFeatures": {
         "required": [
