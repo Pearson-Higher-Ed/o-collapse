@@ -1,4 +1,4 @@
-# o-collapse [![Build Status](https://travis-ci.org/aarmour/o-collapse.svg?branch=master)](https://travis-ci.org/aarmour/o-collapse)
+# o-collapse [![Build Status](https://travis-ci.org/Pearson-Higher-Ed/o-collapse.svg?branch=master)](https://travis-ci.org/Pearson-Higher-Ed/o-collapse)
 
 ## Quick start
 
