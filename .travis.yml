@@ -1,7 +1,7 @@
 language: node_js
 sudo: false
 node_js:
-  - "0.12"
+  - '0.12'
 before_install:
   # obt v3 cannot be installed with npm > 2.7.5
   - npm install -g npm@2.7.5
@@ -10,3 +10,7 @@ before_install:
 script:
   - obt test
   - obt verify
+notifications:
+  hipchat:
+    rooms:
+      secure: wKigVRgV0eAfP9PFDDF0kIIOuXz8PNmCMbJYq32irtB+84Q6zY24n+ZUWsgE9tbPxy5yvUXwuMdn9I6LOXJZ4DNUEZzGq7y0BoJtaXND1f+JUGyB09h2vzOmcg9srNNVh3wRyj5Z7/SQr3KMjXyspRoVGj6LQmqjiw5yuQsAFpGPyPzwnRD6uw80RR9FBc4rYU98fhq6uogQc3esQCuW+p+bzSPArdWOGzMl8YqjFl+h2Ph4Ra/hMDRUBTaXwSrh2ECmdoYs/ZawkKE+twrFXnHYSP+2H3BPv5ZCUp4V5VJcnbLBMgS5+hxmx86UYybL/KbYpG1P+Qcn+M65pL8CD6yuAzsr3sE6haiFYYTV4Zl3O+HTVzoFa02W6SnbqfKgBfR/Cl5QW1itxIuYgSM5cot4RVF3ePoXLRSxGmiFP7vEypo0utdo0cM0KKJWkBopkM90NmmU+r4z3/kHeDV8VLNhp/Xa0aRLqa+um0bf51oSpnLKpq/Zerr31y/AQWSBbJJ7Qp48tU7njzBeW949gcONDI7+WLsZtz3g/UpV5iZkTsX8Xt7AkFsQRogHtGfXvjfUDcCrI4Duvn/mQbQas1l8Fr6FD4/TACstPXW3dBd+ln2+fvMnVeDCOXj5XXMdKt2w0GYzP0lfaCEH11ZA7xdzohouY86k8vqNQa5zWHU=
