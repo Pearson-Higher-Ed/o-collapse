@@ -1,16 +1,18 @@
 language: node_js
 sudo: false
 node_js:
-  - '0.12'
+- '0.12'
 before_install:
-  # obt v3 cannot be installed with npm > 2.7.5
-  - npm install -g npm@2.7.5
-  - npm install -g Financial-Times/origami-build-tools#node12
-  - obt install
+- npm install -g npm@2.7.5
+- npm install -g Financial-Times/origami-build-tools#node12
+- obt install
 script:
-  - obt test
-  - obt verify
+- obt test
+- obt verify
 notifications:
   hipchat:
     rooms:
-      secure: wKigVRgV0eAfP9PFDDF0kIIOuXz8PNmCMbJYq32irtB+84Q6zY24n+ZUWsgE9tbPxy5yvUXwuMdn9I6LOXJZ4DNUEZzGq7y0BoJtaXND1f+JUGyB09h2vzOmcg9srNNVh3wRyj5Z7/SQr3KMjXyspRoVGj6LQmqjiw5yuQsAFpGPyPzwnRD6uw80RR9FBc4rYU98fhq6uogQc3esQCuW+p+bzSPArdWOGzMl8YqjFl+h2Ph4Ra/hMDRUBTaXwSrh2ECmdoYs/ZawkKE+twrFXnHYSP+2H3BPv5ZCUp4V5VJcnbLBMgS5+hxmx86UYybL/KbYpG1P+Qcn+M65pL8CD6yuAzsr3sE6haiFYYTV4Zl3O+HTVzoFa02W6SnbqfKgBfR/Cl5QW1itxIuYgSM5cot4RVF3ePoXLRSxGmiFP7vEypo0utdo0cM0KKJWkBopkM90NmmU+r4z3/kHeDV8VLNhp/Xa0aRLqa+um0bf51oSpnLKpq/Zerr31y/AQWSBbJJ7Qp48tU7njzBeW949gcONDI7+WLsZtz3g/UpV5iZkTsX8Xt7AkFsQRogHtGfXvjfUDcCrI4Duvn/mQbQas1l8Fr6FD4/TACstPXW3dBd+ln2+fvMnVeDCOXj5XXMdKt2w0GYzP0lfaCEH11ZA7xdzohouY86k8vqNQa5zWHU=
+      secure: rgmEM5ZALL+blFfs1dgObp/q9JJcqKKrV/+u8tU7hT1iD+GN+/ghk/N892Xn+R3a7TkxbWFAty9/3sPttPoV7L6VWvHX9FYflts/EkaCDxtQ13uuOJJz6VhOt7UUhwl834P608vR66E4Q1yVuPei905IySmTfJ+Ckz8gmPau2rDIgwuFQ/0dElvJYfuUagKoF07fEXd9uGym4btlbFrONCQVCFJbon94sYRLo9MzRGUN5Kt/jXfjIyJmso7/cyr4FaMn9yEOeIPLxNc/AEbjeKJdTkiHa9RUhYPTNNb82TJTRF5oD2TxE1sj5eP47CrEqyzKo6v5SHkbBsK2ST6WJTiVVQZ//Vd0oU7sGDFpeRqrZjD7hOfChJ7nA33BvnBOHobDAmpUrvSzgThPQyfKdLCDPfQK7YIW8DUbeoIfygD+giAJKYqyBk+3bQpDGxjPF7vTSQWBqKhrmCE74hhgVUQq6Ub6loNAvPpKsV1X20JfhOD3LmK9KCT9XbScJy9gDn+ep1lA9BoByviyS/gOuv8Pcfl2FgMLqYGHBNlmKquzcqOD0t8qofVyxRddDsXiR+j6teCqC46GS481cKz6QRb5KWll8tfLrX3BQELgnWrtfroVH1hUmUOFxg99/BC7nikEXx6gCP0A9Ppv6PPDBvT1wfGyPWVGHi6veAc8MEc=
+    template:
+      - '%{repository}#%{build_number} (%{branch} - %{commit} : %{author}): %{message}'
+
