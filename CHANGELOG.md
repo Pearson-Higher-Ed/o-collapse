@@ -1,3 +1,13 @@
+<a name"0.2.0"></a>
+## 0.2.0 (2015-07-08)
+
+
+#### Features
+
+* accept a selector string as the first argument to the constructor ([0ae5ecd8](https://github.com/Pearson-Higher-Ed/o-collapse/commit/0ae5ecd8))
+* add support for oCollapse.show and oCollapse.hide events ([15e85512](https://github.com/Pearson-Higher-Ed/o-collapse/commit/15e85512))
+
+
 <a name"0.1.0"></a>
 ## 0.1.0 (2015-06-09)
 
