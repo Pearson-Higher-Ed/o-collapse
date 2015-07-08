@@ -25,11 +25,8 @@ describe('Collapse', function () {
 		});
 	});
 
-	it('should throw when element argument is not an instance of HTMLElement', function () {
-		expect(function () { new Collapse({}); }).to.throwException(function (e) {
-			expect(e).to.be.a(TypeError);
-			expect(e.message).to.match(/element must be HTMLElement/);
-		});
+	it('should accept a string argument', function () {
+		new Collapse('body');
 	});
 
 	describe('Collapse.init()', function () {

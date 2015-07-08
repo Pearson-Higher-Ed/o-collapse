@@ -7,7 +7,8 @@ var forEach = require('./utils').forEach;
 function Collapse(element) {
 	if (!(this instanceof Collapse)) throw new TypeError('Failed to construct Collapse: constructor requires \'new\'.');
 	if (arguments.length === 0) throw new TypeError('Failed to construct Collapse: 1 argument required, but 0 provided.');
-	if (!(element instanceof HTMLElement)) throw new TypeError('Failed to construct Collapse: element must be HTMLElement');
+	if (!(element instanceof HTMLElement)) element = document.querySelector(element);
+	if (!element) return;
 
 	var triggerSelector =
 		'[data-toggle="o-collapse"][href="#' + element.id + '"],' +
