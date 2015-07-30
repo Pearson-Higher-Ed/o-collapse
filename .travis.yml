@@ -3,7 +3,6 @@ sudo: false
 node_js:
 - '0.12'
 before_install:
-- npm install -g npm@2.7.5
 - npm install -g Financial-Times/origami-build-tools#node12
 - obt install
 script:
