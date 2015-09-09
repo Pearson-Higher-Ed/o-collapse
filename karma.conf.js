@@ -33,7 +33,7 @@ module.exports = function(config) {
 		},
 
 
-    // browserify preprocessor options
+		// browserify preprocessor options
 		browserify: {
 			debug: true,
 			transform: ['debowerify', require('browserify-istanbul')({
@@ -52,7 +52,7 @@ module.exports = function(config) {
 		coverageReporter: {
 			dir: 'build/reports/coverage',
 			reporters: [
-        { type: 'lcovonly', subdir: '.', file: 'coverage.lcov' },
+				{ type: 'lcovonly', subdir: '.', file: 'coverage.lcov' },
 				{ type: 'html', subdir: 'report-html' }
 			]
 		},
