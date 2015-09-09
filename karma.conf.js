@@ -1,8 +1,6 @@
 /*global module*/
 'use strict';
 
-var istanbul = require('browserify-istanbul');
-
 module.exports = function(config) {
 	config.set({
 
@@ -35,6 +33,15 @@ module.exports = function(config) {
 		},
 
 
+    // browserify preprocessor options
+		browserify: {
+			debug: true,
+			transform: ['debowerify', require('browserify-istanbul')({
+				ignore: ['node_modules/**', 'test/**']
+			})]
+		},
+
+
 		// test results reporter to use
 		// possible values: 'dots', 'progress'
 		// available reporters: https://npmjs.org/browse/keyword/karma-reporter
@@ -45,6 +52,7 @@ module.exports = function(config) {
 		coverageReporter: {
 			dir: 'build/reports/coverage',
 			reporters: [
+        { type: 'lcovonly', subdir: '.', file: 'coverage.lcov' },
 				{ type: 'html', subdir: 'report-html' }
 			]
 		},
@@ -74,14 +82,7 @@ module.exports = function(config) {
 
 		// Continuous Integration mode
 		// if true, Karma captures browsers, runs the tests and exits
-		singleRun: true,
-
-		browserify: {
-			debug: true,
-			transform: ['debowerify', istanbul({
-				ignore: ['node_modules/**', 'test/**']
-			})]
-		}
+		singleRun: true
 
 	});
 };

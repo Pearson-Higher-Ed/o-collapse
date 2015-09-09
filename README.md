@@ -1,4 +1,4 @@
-# o-collapse [![Build Status](https://travis-ci.org/Pearson-Higher-Ed/o-collapse.svg?branch=master)](https://travis-ci.org/Pearson-Higher-Ed/o-collapse)
+# o-collapse [![Build Status](https://travis-ci.org/Pearson-Higher-Ed/o-collapse.svg?branch=master)](https://travis-ci.org/Pearson-Higher-Ed/o-collapse) [![Coverage Status](https://coveralls.io/repos/Pearson-Higher-Ed/o-collapse/badge.svg?branch=master&service=github)](https://coveralls.io/github/Pearson-Higher-Ed/o-collapse?branch=master)
 
 ## Quick start
 
