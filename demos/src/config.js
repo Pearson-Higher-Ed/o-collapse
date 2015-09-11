@@ -1,7 +1,6 @@
 module.exports = {
 	"options": {
 		"sass": "demos/src/demo.scss",
-		"bodyClasses": "o-hoverable-on",
 		"js": "demos/src/demo.js"
 	},
 	"demos": [
