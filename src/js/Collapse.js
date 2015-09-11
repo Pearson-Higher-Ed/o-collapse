@@ -9,6 +9,7 @@ function Collapse(element) {
 	if (arguments.length === 0) throw new TypeError('Failed to construct Collapse: 1 argument required, but 0 provided.');
 	if (!(element instanceof HTMLElement)) element = document.querySelector(element);
 	if (!element) return;
+	if (typeof Collapse.cache.get(element, this) !== 'undefined') return Collapse.cache.get(element, this);
 
 	var triggerSelector =
 		'[data-toggle="o-collapse"][href="#' + element.id + '"],' +
