@@ -12,5 +12,17 @@ $o-collapse-is-silent: false;
 
 .demo-panel {
 	padding: 15px;
+	margin-bottom: 15px;
 	border: 1px solid #cccccc;
+}
+
+.demo-panel-heading {
+	[data-toggle="o-collapse"] {
+		cursor: pointer;
+	}
+}
+
+.demo-accordion {
+	list-style: none;
+	padding: 0;
 }

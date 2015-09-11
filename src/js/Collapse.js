@@ -28,14 +28,26 @@ function Collapse(element) {
 			e.preventDefault();
 
 			var trigger = getTrigger(e.target);
-			var target = getTargetFromTrigger(trigger);
+			var targets = getTargetsFromTrigger(trigger);
 
-			forEach(target, function (index, target) {
-				var collapsible = Collapse.cache.get(target);
+			if (trigger.hasAttribute('data-parent')) {
+				var selector = '[data-parent="' + trigger.getAttribute('data-parent') + '"]';
 
-				if (!collapsible && target.classList.contains('o-collapse')) {
-					collapsible = new Collapse(target);
-				}
+				forEach(document.querySelectorAll(selector), function (idx, el) {
+					var childTargets = getTargetsFromTrigger(el);
+
+					forEach(childTargets, function (index, childTarget) {
+						if (childTarget === targets[0]) return;
+
+						var collapsible = getOrCreateInstance(childTarget);
+
+						if (collapsible) collapsible.hide();
+					});
+				});
+			}
+
+			forEach(targets, function (index, target) {
+				var collapsible = getOrCreateInstance(target);
 
 				if (collapsible) collapsible.toggle();
 			});
@@ -135,9 +147,19 @@ function getTrigger(element) {
 	return element;
 }
 
-function getTargetFromTrigger(element) {
+function getTargetsFromTrigger(element) {
 	var target = element.getAttribute('data-target') || element.getAttribute('href');
 	return document.querySelectorAll(target);
+}
+
+function getOrCreateInstance(element) {
+	var collapsible = Collapse.cache.get(element);
+
+	if (!collapsible && element.classList.contains('o-collapse')) {
+		collapsible = new Collapse(element);
+	}
+
+	return collapsible;
 }
 
 module.exports = Collapse;

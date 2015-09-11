@@ -5,8 +5,12 @@ module.exports = {
 	},
 	"demos": [
 		{
-			"name": "demo",
+			"name": "basic",
 			"template": "demos/src/demo.mustache"
+		},
+		{
+			"name": "accordion",
+			"template": "demos/src/accordion.mustache"
 		}
 	]
 };

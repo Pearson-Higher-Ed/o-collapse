@@ -1,4 +1,4 @@
-/*global describe, it, before, after*/
+/*global describe, it, before, beforeEach, after*/
 'use strict';
 
 var expect = require('expect.js');
@@ -6,6 +6,10 @@ var expect = require('expect.js');
 var Collapse = require('./../src/js/Collapse');
 
 describe('Collapse', function () {
+
+	beforeEach(function () {
+		document.body.innerHTML = '';
+	});
 
 	it('should initialize', function () {
 		expect(new Collapse(document.body)).to.not.be(undefined);
@@ -31,7 +35,7 @@ describe('Collapse', function () {
 
 	describe('Collapse.init()', function () {
 
-		before(function () {
+		beforeEach(function () {
 			var element1 = document.createElement('div');
 			element1.classList.add('o-collapse');
 			document.body.appendChild(element1);
@@ -274,6 +278,75 @@ describe('Collapse', function () {
 			dispatchEvent(nested, 'click');
 
 			expect(isExpanded(element)).to.be(true);
+		});
+
+		it('should collapse all other elements under the same parent when data-parent is defined and an element is expanded', function () {
+			var parentElement = document.createElement('div');
+			parentElement.id = 'parent';
+			document.body.appendChild(parentElement);
+
+			var childElements = [];
+
+			for (var i = 0; i < 2; i++) {
+				var toggleElement = document.createElement('button');
+				toggleElement.setAttribute('data-toggle', 'o-collapse');
+				toggleElement.setAttribute('data-target', "#item-" + (i + 1));
+				toggleElement.setAttribute('data-parent', '#parent');
+
+				var targetElement = document.createElement('div');
+				targetElement.id = "item-" + (i + 1);
+				targetElement.classList.add('o-collapse');
+
+				parentElement.appendChild(toggleElement);
+				parentElement.appendChild(targetElement);
+
+				childElements.push({ toggleElement: toggleElement, targetElement: targetElement });
+			}
+
+			Collapse.init(parentElement);
+
+			dispatchEvent(childElements[0].toggleElement, 'click');
+
+			expect(isExpanded(childElements[0].targetElement)).to.be(true);
+
+			dispatchEvent(childElements[1].toggleElement, 'click');
+
+			expect(isExpanded(childElements[1].targetElement)).to.be(true);
+			expect(isExpanded(childElements[0].targetElement)).to.be(false);
+		});
+
+		it('should collapse the expanded element when data-parent is defined', function () {
+			var parentElement = document.createElement('div');
+			parentElement.id = 'parent';
+			document.body.appendChild(parentElement);
+
+			var childElements = [];
+
+			for (var i = 0; i < 2; i++) {
+				var toggleElement = document.createElement('button');
+				toggleElement.setAttribute('data-toggle', 'o-collapse');
+				toggleElement.setAttribute('data-target', "#item-" + (i + 1));
+				toggleElement.setAttribute('data-parent', '#parent');
+
+				var targetElement = document.createElement('div');
+				targetElement.id = "item-" + (i + 1);
+				targetElement.classList.add('o-collapse');
+
+				parentElement.appendChild(toggleElement);
+				parentElement.appendChild(targetElement);
+
+				childElements.push({ toggleElement: toggleElement, targetElement: targetElement });
+			}
+
+			Collapse.init(parentElement);
+
+			dispatchEvent(childElements[0].toggleElement, 'click');
+
+			expect(isExpanded(childElements[0].targetElement)).to.be(true);
+
+			dispatchEvent(childElements[0].toggleElement, 'click');
+
+			expect(isExpanded(childElements[0].targetElement)).to.be(false);
 		});
 
 	});
