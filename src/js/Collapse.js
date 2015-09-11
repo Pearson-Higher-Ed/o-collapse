@@ -32,7 +32,7 @@ function Collapse(element) {
 			forEach(target, function (index, target) {
 				var collapsible = Collapse.cache.get(target);
 
-				if (!collapsible && target.getAttribute('data-o-component') === 'o-collapse') {
+				if (!collapsible && target.classList.contains('o-collapse')) {
 					collapsible = new Collapse(target);
 				}
 
@@ -123,7 +123,7 @@ function selectAll(element) {
 		element = document.querySelector(element);
 	}
 
-	return element.querySelectorAll('[data-o-component="o-collapse"]');
+	return element.querySelectorAll('.o-collapse');
 }
 
 function getTrigger(element) {

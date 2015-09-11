@@ -33,11 +33,11 @@ describe('Collapse', function () {
 
 		before(function () {
 			var element1 = document.createElement('div');
-			element1.setAttribute('data-o-component', 'o-collapse');
+			element1.classList.add('o-collapse');
 			document.body.appendChild(element1);
 
 			var element2 = document.createElement('div');
-			element2.setAttribute('data-o-component', 'o-collapse');
+			element2.classList.add('o-collapse');
 			document.body.appendChild(element2);
 		});
 
@@ -213,7 +213,7 @@ describe('Collapse', function () {
 		it('should toggle element', function () {
 			var element = document.createElement('div');
 			element.id = 'click';
-			element.setAttribute('data-o-component', 'o-collapse');
+			element.classList.add('o-collapse');
 			document.body.appendChild(element);
 
 			var linkTrigger = document.createElement('a');
@@ -244,7 +244,7 @@ describe('Collapse', function () {
 		it('should create a new Collapse instance if the target does not have one', function () {
 			var element = document.createElement('div');
 			element.id = 'not-initialized';
-			element.setAttribute('data-o-component', 'o-collapse');
+			element.classList.add('o-collapse');
 			document.body.appendChild(element);
 
 			var trigger = document.createElement('button');
@@ -260,7 +260,7 @@ describe('Collapse', function () {
 		it('should work when the event target is nested below the trigger element', function () {
 			var element = document.createElement('div');
 			element.id = 'nested-target';
-			element.setAttribute('data-o-component', 'o-collapse');
+			element.classList.add('o-collapse');
 			document.body.appendChild(element);
 
 			var trigger = document.createElement('button');
