@@ -1,3 +1,21 @@
+<a name="0.3.0"></a>
+# [0.3.0](//compare/v0.2.0...v0.3.0) (2015-09-14)
+
+
+### Bug Fixes
+
+* do not reinit if element is already in the cache f992af7
+
+### Features
+
+* add support for data-parent to group collapsible elements dd7fc51
+* remove support for data-o-component 69a5ffb
+
+### Breaking Changes
+
+* data-o-component is no longer supported, and this attribute should not be used.
+
+
 <a name"0.2.0"></a>
 ## 0.2.0 (2015-07-08)
 
