@@ -2,7 +2,7 @@
 
 ## Quick start
 
-Add `class="o-collapse"` and `data-o-component="o-collapse"` to the target element to enable collapse. You can use a link with `href` or a button with `data-target` as the trigger:
+Add `class="o-collapse"` to the target element to enable collapse. You can use a link with `href` or a button with `data-target` as the trigger:
 
 ```html
 <a href="#collapse-example" data-toggle="o-collapse" aria-controls="collapse-example" aria-expanded="false">Link trigger</a>
