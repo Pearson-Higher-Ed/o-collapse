@@ -8,11 +8,16 @@
         "required": [
             "WeakMap",
             "createevent"
-        ]    
+        ]
     },
     "demos": [
         {
-            "path": "/demos/demo.html",
+            "path": "/demos/basic.html",
+            "expanded": true,
+            "description": ""
+        },
+        {
+            "path": "/demos/accordion.html",
             "expanded": true,
             "description": ""
         }
