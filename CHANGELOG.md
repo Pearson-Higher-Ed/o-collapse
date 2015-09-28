@@ -1,3 +1,13 @@
+<a name="1.0.2"></a>
+## [1.0.2](//compare/v1.0.1...v1.0.2) (2015-09-28)
+
+
+### Bug Fixes
+
+* add default styles bbfb64f
+
+
+
 <a name="1.0.0"></a>
 # [1.0.0](//compare/v0.3.0...v1.0.0) (2015-09-15)
 
