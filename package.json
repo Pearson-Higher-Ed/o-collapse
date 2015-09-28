@@ -2,6 +2,10 @@
   "private": true,
   "name": "o-collapse",
   "version": "1.0.2",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Pearson-Higher-Ed/o-collapse.git"
+  },
   "scripts": {
     "test": "./node_modules/karma/bin/karma start karma.conf.js"
   },
