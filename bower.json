@@ -4,7 +4,8 @@
     "dom-delegate": "^2.0.3"
   },
   "main": [
-    "main.js"
+    "main.js",
+    "main.scss"
   ],
   "ignore": [
     "examples",
