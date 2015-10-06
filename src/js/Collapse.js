@@ -1,6 +1,9 @@
+/*jshint -W079 */
+
 'use strict';
 
 var DomDelegate = require('dom-delegate');
+var WeakMap = require('o-weakmap');
 var dispatchEvent = require('./utils').dispatchEvent;
 var forEach = require('./utils').forEach;
 

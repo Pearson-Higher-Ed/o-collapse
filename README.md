@@ -65,23 +65,6 @@ document.querySelector('#collapse').addEventListener('oCollapse.show', function 
 
 The `aria-expanded` and `aria-controls` attributes should be added to the toggle element to help assistive devices, such as screen readers, determine the state and location of the collapsible element. The module will automatically update `aria-expanded` depending on the state of the target element.
 
-## Browser support
-
-Tested and working on:
-
-|  Browser   | Versions                  |
-|:----------:|:-------------------------:|
-|   Chrome   |   36+                     |
-|   Firefox  |   30+                     |
-|   Safari   |   7.1+, 7.0 with polyfill |
-|   IE       |   11+, 9/10 with polyfill |
-
-Browser versions that do not support [WeakMap](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap) must use a polyfill, for example via the [polyfill service](https://cdn.polyfill.io/v1/docs/):
-
-```html
-<script src="https://cdn.polyfill.io/v1/polyfill.min.js?features=default,WeakMap"></script>
-```
-
 ## License
 
 This software is published by Pearson Education under the [MIT license](LICENSE).
