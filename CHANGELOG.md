@@ -1,3 +1,13 @@
+<a name="1.1.0"></a>
+# [1.1.0](https://github.com/Pearson-Higher-Ed/o-collapse/compare/v1.0.2...v1.1.0) (2015-10-06)
+
+
+### Features
+
+* remove WeakMap polyfill requirement ([b980d05](https://github.com/Pearson-Higher-Ed/o-collapse/commit/b980d05))
+
+
+
 <a name="1.0.2"></a>
 ## [1.0.2](//compare/v1.0.1...v1.0.2) (2015-09-28)
 
