@@ -6,6 +6,7 @@
     "supportStatus": "active",
     "browserFeatures": {
         "required": [
+            "classlist",
             "createevent"
         ]
     },
