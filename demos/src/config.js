@@ -1,16 +1,16 @@
 module.exports = {
-	"options": {
-		"sass": "demos/src/demo.scss",
-		"js": "demos/src/demo.js"
+	options: {
+		sass: 'demos/src/demo.scss',
+		js: 'demos/src/demo.js'
 	},
-	"demos": [
+	demos: [
 		{
-			"name": "basic",
-			"template": "demos/src/demo.mustache"
+			name: 'basic',
+			template: 'demos/src/demo.mustache'
 		},
 		{
-			"name": "accordion",
-			"template": "demos/src/accordion.mustache"
+			name: 'accordion',
+			template: 'demos/src/accordion.mustache'
 		}
 	]
 };

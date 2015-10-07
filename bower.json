@@ -1,8 +1,7 @@
 {
   "name": "o-collapse",
   "dependencies": {
-    "dom-delegate": "^2.0.3",
-    "o-weakmap": "^1.0.0"
+    "dom-delegate": "^2.0.3"
   },
   "main": [
     "main.js",

@@ -1,78 +1,69 @@
 /*global describe, it, before, beforeEach, after*/
-'use strict';
 
-var expect = require('expect.js');
+import expect from 'expect.js';
+import Collapse from './../src/js/Collapse';
 
-var Collapse = require('./../src/js/Collapse');
+describe('Collapse', () => {
 
-describe('Collapse', function () {
-
-	beforeEach(function () {
+	beforeEach(() => {
 		document.body.innerHTML = '';
 	});
 
-	it('should initialize', function () {
+	it('should initialize', () => {
 		expect(new Collapse(document.body)).to.not.be(undefined);
 	});
 
-	it('should throw when called without \'new\'', function () {
-		expect(function () { Collapse(); }).to.throwException(function (e) { // jshint ignore:line
-			expect(e).to.be.a(TypeError);
-			expect(e.message).to.match(/constructor requires \'new\'/);
-		});
-	});
-
-	it('should throw when no arguments are provided', function () {
-		expect(function () { new Collapse(); }).to.throwException(function (e) {
+	it('should throw when no arguments are provided', () => {
+		expect(() => new Collapse()).to.throwException(function (e) {
 			expect(e).to.be.a(TypeError);
 			expect(e.message).to.match(/1 argument required/);
 		});
 	});
 
-	it('should accept a string argument', function () {
+	it('should accept a string argument', () => {
 		new Collapse('body');
 	});
 
-	describe('Collapse.init()', function () {
+	describe('Collapse.init()', () => {
 
-		beforeEach(function () {
-			var element1 = document.createElement('div');
+		beforeEach(() => {
+			const element1 = document.createElement('div');
 			element1.classList.add('o-collapse');
 			document.body.appendChild(element1);
 
-			var element2 = document.createElement('div');
+			const element2 = document.createElement('div');
 			element2.classList.add('o-collapse');
 			document.body.appendChild(element2);
 		});
 
-		it('should init all collapsible elements', function () {
-			var collapsibles = Collapse.init();
+		it('should init all collapsible elements', () => {
+			const collapsibles = Collapse.init();
 			expect(collapsibles.length).to.be(2);
 		});
 
-		it('should work when element is a selector', function () {
-			var collapsibles = Collapse.init('body');
+		it('should work when element is a selector', () => {
+			const collapsibles = Collapse.init('body');
 			expect(collapsibles.length).to.be(2);
 		});
 
 	});
 
-	describe('Collapse.destroy()', function () {
+	describe('Collapse.destroy()', () => {
 
-		var bodyDelegate;
+		let bodyDelegate;
 
-		before(function () {
+		before(() => {
 			bodyDelegate = Collapse.bodyDelegate;
 		});
 
-		after(function () {
+		after(() => {
 			Collapse.bodyDelegate = bodyDelegate;
 		});
 
-		it('should destroy', function () {
-			var destroyed = false;
+		it('should destroy', () => {
+			let destroyed = false;
 			Collapse.bodyDelegate = {
-				destroy: function () { destroyed = true; }
+				destroy: () => { destroyed = true; }
 			};
 
 			Collapse.destroy();
@@ -82,13 +73,13 @@ describe('Collapse', function () {
 
 	});
 
-	describe('show()', function () {
+	describe('show()', () => {
 
-		it('should expand the element', function () {
-			var element = document.createElement('div');
+		it('should expand the element', () => {
+			const element = document.createElement('div');
 			document.body.appendChild(element);
 
-			var collapsible = new Collapse(element);
+			const collapsible = new Collapse(element);
 
 			expect(isExpanded(element)).to.be(false);
 
@@ -97,24 +88,24 @@ describe('Collapse', function () {
 			expect(isExpanded(element)).to.be(true);
 		});
 
-		it('should set aria-expanded="true" on the trigger elements', function () {
-			var element = document.createElement('div');
+		it('should set aria-expanded="true" on the trigger elements', () => {
+			const element = document.createElement('div');
 			element.id = 'collapse';
 			document.body.appendChild(element);
 
-			var linkTrigger = document.createElement('a');
+			const linkTrigger = document.createElement('a');
 			linkTrigger.setAttribute('data-toggle', 'o-collapse');
 			linkTrigger.setAttribute('href', '#collapse');
 			linkTrigger.setAttribute('aria-expanded', false);
 			document.body.appendChild(linkTrigger);
 
-			var buttonTrigger = document.createElement('button');
+			const buttonTrigger = document.createElement('button');
 			buttonTrigger.setAttribute('data-toggle', 'o-collapse');
 			buttonTrigger.setAttribute('data-target', '#collapse');
 			buttonTrigger.setAttribute('aria-expanded', false);
 			document.body.appendChild(buttonTrigger);
 
-			var collapsible = new Collapse(element);
+			const collapsible = new Collapse(element);
 
 			collapsible.show();
 
@@ -123,10 +114,10 @@ describe('Collapse', function () {
 		});
 
 		it('should emit oCollapse.show', function (done) {
-			var element = document.createElement('div');
+			const element = document.createElement('div');
 			document.body.appendChild(element);
 
-			var collapsible = new Collapse(element);
+			const collapsible = new Collapse(element);
 
 			element.addEventListener('oCollapse.show', function (e) {
 				expect(e.target).to.be(element);
@@ -138,38 +129,38 @@ describe('Collapse', function () {
 
 	});
 
-	describe('hide()', function () {
+	describe('hide()', () => {
 
-		it('should collapse the element', function () {
-			var element = document.createElement('div');
+		it('should collapse the element', () => {
+			const element = document.createElement('div');
 			document.body.appendChild(element);
 
-			var collapsible = new Collapse(element);
+			const collapsible = new Collapse(element);
 			collapsible.show();
 			collapsible.hide();
 
 			expect(isExpanded(element)).to.be(false);
 		});
 
-		it('should set aria-expanded="false" on the trigger elements', function () {
-			var element = document.createElement('div');
+		it('should set aria-expanded="false" on the trigger elements', () => {
+			const element = document.createElement('div');
 			element.id = 'collapse';
 			element.classList.add('o-collapse--expanded');
 			document.body.appendChild(element);
 
-			var linkTrigger = document.createElement('a');
+			const linkTrigger = document.createElement('a');
 			linkTrigger.setAttribute('data-toggle', 'o-collapse');
 			linkTrigger.setAttribute('href', '#collapse');
 			linkTrigger.setAttribute('aria-expanded', true);
 			document.body.appendChild(linkTrigger);
 
-			var buttonTrigger = document.createElement('button');
+			const buttonTrigger = document.createElement('button');
 			buttonTrigger.setAttribute('data-toggle', 'o-collapse');
 			buttonTrigger.setAttribute('data-target', '#collapse');
 			buttonTrigger.setAttribute('aria-expanded', true);
 			document.body.appendChild(buttonTrigger);
 
-			var collapsible = new Collapse(element);
+			const collapsible = new Collapse(element);
 
 			collapsible.hide();
 
@@ -178,10 +169,10 @@ describe('Collapse', function () {
 		});
 
 		it('should emit oCollapse.hide', function (done) {
-			var element = document.createElement('div');
+			const element = document.createElement('div');
 			document.body.appendChild(element);
 
-			var collapsible = new Collapse(element);
+			const collapsible = new Collapse(element);
 
 			element.addEventListener('oCollapse.hide', function (e) {
 				expect(e.target).to.be(element);
@@ -194,13 +185,13 @@ describe('Collapse', function () {
 
 	});
 
-	describe('toggle()', function () {
+	describe('toggle()', () => {
 
-		it('should toggle the collapse state of the element', function () {
-			var element = document.createElement('div');
+		it('should toggle the collapse state of the element', () => {
+			const element = document.createElement('div');
 			document.body.appendChild(element);
 
-			var collapsible = new Collapse(element);
+			const collapsible = new Collapse(element);
 			collapsible.toggle();
 
 			expect(isExpanded(element)).to.be(true);
@@ -212,20 +203,20 @@ describe('Collapse', function () {
 
 	});
 
-	describe('click event', function () {
+	describe('click event', () => {
 
-		it('should toggle element', function () {
-			var element = document.createElement('div');
+		it('should toggle element', () => {
+			const element = document.createElement('div');
 			element.id = 'click';
 			element.classList.add('o-collapse');
 			document.body.appendChild(element);
 
-			var linkTrigger = document.createElement('a');
+			const linkTrigger = document.createElement('a');
 			linkTrigger.setAttribute('data-toggle', 'o-collapse');
 			linkTrigger.setAttribute('href', '#click');
 			document.body.appendChild(linkTrigger);
 
-			var buttonTrigger = document.createElement('button');
+			const buttonTrigger = document.createElement('button');
 			buttonTrigger.setAttribute('data-toggle', 'o-collapse');
 			buttonTrigger.setAttribute('data-target', '#click');
 			document.body.appendChild(buttonTrigger);
@@ -245,13 +236,13 @@ describe('Collapse', function () {
 			expect (isExpanded(element)).to.be(false);
 		});
 
-		it('should create a new Collapse instance if the target does not have one', function () {
-			var element = document.createElement('div');
+		it('should create a new Collapse instance if the target does not have one', () => {
+			const element = document.createElement('div');
 			element.id = 'not-initialized';
 			element.classList.add('o-collapse');
 			document.body.appendChild(element);
 
-			var trigger = document.createElement('button');
+			const trigger = document.createElement('button');
 			trigger.setAttribute('data-toggle', 'o-collapse');
 			trigger.setAttribute('data-target', '#not-initialized');
 			document.body.appendChild(trigger);
@@ -261,18 +252,18 @@ describe('Collapse', function () {
 			expect(isExpanded(element)).to.be(true);
 		});
 
-		it('should work when the event target is nested below the trigger element', function () {
-			var element = document.createElement('div');
+		it('should work when the event target is nested below the trigger element', () => {
+			const element = document.createElement('div');
 			element.id = 'nested-target';
 			element.classList.add('o-collapse');
 			document.body.appendChild(element);
 
-			var trigger = document.createElement('button');
+			const trigger = document.createElement('button');
 			trigger.setAttribute('data-toggle', 'o-collapse');
 			trigger.setAttribute('data-target', '#nested-target');
 			document.body.appendChild(trigger);
 
-			var nested = document.createElement('span');
+			const nested = document.createElement('span');
 			trigger.appendChild(nested);
 
 			dispatchEvent(nested, 'click');
@@ -280,20 +271,20 @@ describe('Collapse', function () {
 			expect(isExpanded(element)).to.be(true);
 		});
 
-		it('should collapse all other elements under the same parent when data-parent is defined and an element is expanded', function () {
-			var parentElement = document.createElement('div');
+		it('should collapse all other elements under the same parent when data-parent is defined and an element is expanded', () => {
+			const parentElement = document.createElement('div');
 			parentElement.id = 'parent';
 			document.body.appendChild(parentElement);
 
-			var childElements = [];
+			const childElements = [];
 
-			for (var i = 0; i < 2; i++) {
-				var toggleElement = document.createElement('button');
+			for (let i = 0; i < 2; i++) {
+				const toggleElement = document.createElement('button');
 				toggleElement.setAttribute('data-toggle', 'o-collapse');
 				toggleElement.setAttribute('data-target', "#item-" + (i + 1));
 				toggleElement.setAttribute('data-parent', '#parent');
 
-				var targetElement = document.createElement('div');
+				const targetElement = document.createElement('div');
 				targetElement.id = "item-" + (i + 1);
 				targetElement.classList.add('o-collapse');
 
@@ -315,20 +306,20 @@ describe('Collapse', function () {
 			expect(isExpanded(childElements[0].targetElement)).to.be(false);
 		});
 
-		it('should collapse the expanded element when data-parent is defined', function () {
-			var parentElement = document.createElement('div');
+		it('should collapse the expanded element when data-parent is defined', () => {
+			const parentElement = document.createElement('div');
 			parentElement.id = 'parent';
 			document.body.appendChild(parentElement);
 
-			var childElements = [];
+			const childElements = [];
 
-			for (var i = 0; i < 2; i++) {
-				var toggleElement = document.createElement('button');
+			for (let i = 0; i < 2; i++) {
+				const toggleElement = document.createElement('button');
 				toggleElement.setAttribute('data-toggle', 'o-collapse');
 				toggleElement.setAttribute('data-target', "#item-" + (i + 1));
 				toggleElement.setAttribute('data-parent', '#parent');
 
-				var targetElement = document.createElement('div');
+				const targetElement = document.createElement('div');
 				targetElement.id = "item-" + (i + 1);
 				targetElement.classList.add('o-collapse');
 
@@ -355,7 +346,7 @@ describe('Collapse', function () {
 
 function dispatchEvent(element, name, data) {
 	if (document.createEvent && element.dispatchEvent) {
-		var event = document.createEvent('Event');
+		const event = document.createEvent('Event');
 		event.initEvent(name, true, true);
 
 		if (data) {
