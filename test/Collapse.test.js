@@ -1,6 +1,7 @@
 /*global describe, it, before, beforeEach, after*/
 
 import expect from 'expect.js';
+import componentHandler from 'o-component-handler';
 import Collapse from './../src/js/Collapse';
 
 describe('Collapse', () => {
@@ -22,30 +23,6 @@ describe('Collapse', () => {
 
 	it('should accept a string argument', () => {
 		new Collapse('body');
-	});
-
-	describe('Collapse.init()', () => {
-
-		beforeEach(() => {
-			const element1 = document.createElement('div');
-			element1.classList.add('o-collapse');
-			document.body.appendChild(element1);
-
-			const element2 = document.createElement('div');
-			element2.classList.add('o-collapse');
-			document.body.appendChild(element2);
-		});
-
-		it('should init all collapsible elements', () => {
-			const collapsibles = Collapse.init();
-			expect(collapsibles.length).to.be(2);
-		});
-
-		it('should work when element is a selector', () => {
-			const collapsibles = Collapse.init('body');
-			expect(collapsibles.length).to.be(2);
-		});
-
 	});
 
 	describe('Collapse.destroy()', () => {
@@ -247,6 +224,8 @@ describe('Collapse', () => {
 			trigger.setAttribute('data-target', '#not-initialized');
 			document.body.appendChild(trigger);
 
+			componentHandler.upgradeAllRegistered();
+
 			dispatchEvent(trigger, 'click');
 
 			expect(isExpanded(element)).to.be(true);
@@ -265,6 +244,8 @@ describe('Collapse', () => {
 
 			const nested = document.createElement('span');
 			trigger.appendChild(nested);
+
+			componentHandler.upgradeAllRegistered();
 
 			dispatchEvent(nested, 'click');
 
@@ -294,7 +275,7 @@ describe('Collapse', () => {
 				childElements.push({ toggleElement: toggleElement, targetElement: targetElement });
 			}
 
-			Collapse.init(parentElement);
+			componentHandler.upgradeAllRegistered();
 
 			dispatchEvent(childElements[0].toggleElement, 'click');
 
@@ -329,7 +310,7 @@ describe('Collapse', () => {
 				childElements.push({ toggleElement: toggleElement, targetElement: targetElement });
 			}
 
-			Collapse.init(parentElement);
+			componentHandler.upgradeAllRegistered();
 
 			dispatchEvent(childElements[0].toggleElement, 'click');
 

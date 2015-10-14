@@ -1,5 +1,8 @@
 import DomDelegate from 'dom-delegate';
+import componentHandler from 'o-component-handler';
 import { dispatchEvent, forEach } from './utils';
+
+const CSS_CLASS = 'o-collapse';
 
 export default class Collapse {
 
@@ -7,7 +10,6 @@ export default class Collapse {
 		if (arguments.length === 0) throw new TypeError('Failed to construct Collapse: 1 argument required, but 0 provided.');
 		if (!(element instanceof HTMLElement)) element = document.querySelector(element);
 		if (!element) return;
-		if (typeof Collapse.cache.get(element, this) !== 'undefined') return Collapse.cache.get(element, this);
 
 		const triggerSelector =
 			'[data-toggle="o-collapse"][href="#' + element.id + '"],' +
@@ -15,7 +17,6 @@ export default class Collapse {
 
 		this.target_ = element;
 		this.triggers_ = document.querySelectorAll(triggerSelector);
-		Collapse.cache.set(element, this);
 
 		if (!element.classList.contains('o-collapse')) element.classList.add('o-collapse');
 
@@ -105,25 +106,6 @@ export default class Collapse {
 
 }
 
-Collapse.cache = new WeakMap();
-
-/**
- * Initializes all collapsible elements on the page or within
- * the element passed in.
- * @param {HTMLElement|string} element DOM element or selector.
- * @returns {Collapse[]} List of Collapse instances that
- * have been initialized.
- */
-Collapse.init = (element) => {
-	const collapseEls = selectAll(element);
-	const collapsibles = [];
-
-	for (let i = 0, l = collapseEls.length; i < l; i++) {
-		collapsibles.push(new Collapse(collapseEls[i]));
-	}
-
-	return collapsibles;
-};
 
 /**
  * Destroys all collapsible elements on the page.
@@ -133,15 +115,20 @@ Collapse.destroy = () => {
 	if (Collapse.bodyDelegate) Collapse.bodyDelegate.destroy();
 };
 
-function selectAll(element) {
-	if (!element) {
-		element = document.body;
-	} else if (!(element instanceof HTMLElement)) {
-		element = document.querySelector(element);
-	}
 
-	return element.querySelectorAll('.o-collapse');
-}
+/**
+ * Register this component with the component handler.
+ */
+componentHandler.register({
+	constructor: Collapse,
+	classAsString: 'Collapse',
+	cssClass: CSS_CLASS
+});
+
+
+/**
+ * Private
+ */
 
 function getTrigger(element) {
 	while (element && element.getAttribute('data-toggle') !== 'o-collapse') {
@@ -158,11 +145,12 @@ function getTargetsFromTrigger(element) {
 }
 
 function getOrCreateInstance(element) {
-	let collapsible = Collapse.cache.get(element);
+	let instance = componentHandler.getInstance(element, CSS_CLASS);
 
-	if (!collapsible && element.classList.contains('o-collapse')) {
-		collapsible = new Collapse(element);
+	if (!instance && element.classList.contains('o-collapse')) {
+		componentHandler.upgradeElement(element, 'Collapse');
+		instance = componentHandler.getInstance(element, CSS_CLASS);
 	}
 
-	return collapsible;
+	return instance;
 }
