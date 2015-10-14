@@ -3,6 +3,7 @@
 import expect from 'expect.js';
 import componentHandler from 'o-component-handler';
 import Collapse from './../src/js/Collapse';
+import { dispatchEvent, isExpanded } from './helpers';
 
 describe('Collapse', () => {
 
@@ -324,21 +325,3 @@ describe('Collapse', () => {
 	});
 
 });
-
-function dispatchEvent(element, name, data) {
-	if (document.createEvent && element.dispatchEvent) {
-		const event = document.createEvent('Event');
-		event.initEvent(name, true, true);
-
-		if (data) {
-			event.detail = data;
-		}
-
-		element.dispatchEvent(event);
-	}
-}
-
-function isExpanded(element) {
-	return element.classList.contains('o-collapse--expanded') &&
-		element.getAttribute('aria-expanded') === 'true';
-}
