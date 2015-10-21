@@ -1,14 +1,3 @@
-<a name="2.0.0"></a>
-# [2.0.0](https://github.com/Pearson-Higher-Ed/o-collapse/compare/v1.1.0...v2.0.0) (2015-10-21)
-
-
-### Features
-
-* es2015 ([8827ca1](https://github.com/Pearson-Higher-Ed/o-collapse/commit/8827ca1))
-* register component using the component handler (o-component-handler) ([9ae141c](https://github.com/Pearson-Higher-Ed/o-collapse/commit/9ae141c))
-
-
-
 <a name="1.1.0"></a>
 # [1.1.0](https://github.com/Pearson-Higher-Ed/o-collapse/compare/v1.0.2...v1.1.0) (2015-10-06)
 
